@@ -8,17 +8,16 @@ pipeline {
     }
 
     stages {
-        stage("Build") {
+        
             steps {
-                sh "ssh -V"
-                sh "mvn -version"
-                sh "mvn clean install"
-                sh "mvn clean compile"
-            }
-        }
-        stage("deploy") {
-            setps {
-                
+                stage("Build") {
+                    sh "ssh -V"
+                    sh "mvn -version"
+                    sh "mvn clean install"
+                    sh "mvn clean compile"
+                }
+                stage("deploy") {
+                }
             }
         }
     }
