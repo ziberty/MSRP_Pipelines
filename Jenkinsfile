@@ -14,16 +14,19 @@ pipeline {
                 sh "mvn -version"
                 sh "mvn clean install"
                 sh "mvn clean compile"
+                sh "mvn package"
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing'
+                sh "mvn test"
+                echo "test successful"
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying'
+                deploy adapters: [tomcat9(credentialsId: '0ec60cd3-c147-467b-bc23-ceabd7954e28', path: '', url: 'http://localhost:8081/')], contextPath: 'jenkins_calci', onFailure: false, war: '**/*.war'
+                echo "Deploy successful";
             }
         }
     }
