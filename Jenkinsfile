@@ -16,9 +16,14 @@ pipeline {
                 sh "mvn clean compile"
             }
         }
-        stage("deploy") {
+        stage('Test') {
             steps {
-                
+                echo 'Testing'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying'
             }
         }
     }
