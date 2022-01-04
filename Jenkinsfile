@@ -16,5 +16,10 @@ pipeline {
                 sh "mvn clean compile"
             }
         }
+        stage("deploy") {
+            setps {
+                
+            }
+        }
     }
 }
